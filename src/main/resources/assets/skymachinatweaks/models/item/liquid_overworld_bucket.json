@@ -1,0 +1,7 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "skymachinatweaks:item/base_bucket",
+		"layer1": "skymachinatweaks:item/fake_fluid"
+	}
+}
