@@ -24,6 +24,12 @@
   "item.skymachinatweaks.final_sky_base": "Final Sky Base",
   "item.skymachinatweaks.redstone_spool": "Redstone Spool",
   "item.skymachinatweaks.redstone_wire": "Redstone Wire",
+  "item.skymachinatweaks.incomplete_overworld_cake": "Incomplete Overworld Cake",
+  "item.skymachinatweaks.incomplete_nether_cake": "Incomplete Nether Cake",
+  "item.skymachinatweaks.incomplete_void_cake": "Incomplete Void Cake",
+  "item.skymachinatweaks.overworld_cake_base": "Overworld Cake Base",
+  "item.skymachinatweaks.nether_cake_base": "Nether Cake Base",
+  "item.skymachinatweaks.void_cake_base": "Void Cake Base",
 
   "_comment": "Blocks",
   "block.skymachinatweaks.flower_pile": "Flower Pile",

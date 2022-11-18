@@ -87,17 +87,29 @@ public enum MachinaItems {
     SKY_BASE(SkyMachinaTweaks.register().item("final_sky_base", Item::new)
             .model(AssetLookup.itemModel("final_sky_base"))
             .register()),
-    OVERWORLD_CAKE_BASE(SkyMachinaTweaks.register().item("overworld_cake_base", SequencedAssemblyItem::new)
+    OVERWORLD_CAKE_BASE(SkyMachinaTweaks.register().item("overworld_cake_base", Item::new)
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(41, 201, 10), 0))
             .model(AssetLookup.itemModel("overworld_cake_base"))
             .register()),
-    NETHER_CAKE_BASE(SkyMachinaTweaks.register().item("nether_cake_base", SequencedAssemblyItem::new)
+    NETHER_CAKE_BASE(SkyMachinaTweaks.register().item("nether_cake_base", Item::new)
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(137,39,39), 0))
             .model(AssetLookup.itemModel("nether_cake_base"))
             .register()),
-    VOID_CAKE_BASE(SkyMachinaTweaks.register().item("void_cake_base", SequencedAssemblyItem::new)
+    VOID_CAKE_BASE(SkyMachinaTweaks.register().item("void_cake_base", Item::new)
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(64,38,81), 0))
             .model(AssetLookup.itemModel("void_cake_base"))
+            .register()),
+    INCOMPLETE_OVERWORLD_CAKE(SkyMachinaTweaks.register().item("incomplete_overworld_cake", SequencedAssemblyItem::new)
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(41, 201, 10), 0))
+            .model(AssetLookup.itemModel("incomplete_overworld_cake"))
+            .register()),
+    INCOMPLETE_NETHER_CAKE(SkyMachinaTweaks.register().item("incomplete_nether_cake", SequencedAssemblyItem::new)
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(137,39,39), 0))
+            .model(AssetLookup.itemModel("incomplete_nether_cake"))
+            .register()),
+    INCOMPLETE_VOID_CAKE(SkyMachinaTweaks.register().item("incomplete_void_cake", SequencedAssemblyItem::new)
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(64,38,81), 0))
+            .model(AssetLookup.itemModel("incomplete_void_cake"))
             .register()),
     REDSTONE_WIRE(SkyMachinaTweaks.register().item("redstone_wire", Item::new)
             .model(AssetLookup.itemModel("redstone_wire"))
