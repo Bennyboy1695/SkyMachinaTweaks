@@ -10,7 +10,6 @@ import io.github.bennyboy1695.skymachinatweaks.config.Config;
 import io.github.bennyboy1695.skymachinatweaks.util.ColorUtils;
 import io.github.bennyboy1695.skymachinatweaks.util.ItemColorImpl;
 import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -25,15 +24,21 @@ public enum MachinaItems {
             .tag(ModTags.ModItemTags.MESHES.tag)
             .register()),
     STEEL_MESH(SkyMachinaTweaks.register().item("steel_mesh", properties -> new CustomMesh(properties, Config.COMMON.steelMeshDurability.get(), Config.COMMON.steelMeshTakeDurability.get()))
-            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(255,255,255), 0))
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(69, 73, 72), 0))
             .model(AssetLookup.customGenericItemModel("meshes", "steel_mesh"))
             .tag(ModTags.ModItemTags.MESHES.tag)
             .register()),
     LEAD_MESH(SkyMachinaTweaks.register().item("lead_mesh", properties -> new CustomMesh(properties, Config.COMMON.leadMeshDurability.get(), Config.COMMON.leadMeshTakeDurability.get()))
-            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(125,125,125), 0))
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(62, 67, 87), 0))
             .model(AssetLookup.customGenericItemModel("meshes", "lead_mesh"))
             .tag(ModTags.ModItemTags.MESHES.tag)
             .register()),
+    OMNI_MESH(SkyMachinaTweaks.register().item("omni_mesh", properties -> new CustomMesh(properties, Config.COMMON.omniMeshDurability.get(), Config.COMMON.omniMeshTakeDurability.get()))
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(21,191,55), 0))
+            .model(AssetLookup.customGenericItemModel("meshes", "omni_mesh"))
+            .tag(ModTags.ModItemTags.MESHES.tag)
+            .register()),
+
     DUSTY_ORE_0(SkyMachinaTweaks.register().item("dusty_crushed_ore_l0", Item::new)
             .model(AssetLookup.itemModel("dusty_crushed_ore_l0"))
             .register()),
@@ -42,31 +47,26 @@ public enum MachinaItems {
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(255,255,255), 0))
             .model(AssetLookup.itemModel("dusty_crushed_ore_l1"))
             .register()),
-
     DUSTY_ORE_2(SkyMachinaTweaks.register().item("dusty_crushed_ore_l2", Item::new)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(255,255,85), 0))
             .model(AssetLookup.itemModel("dusty_crushed_ore_l2"))
             .register()),
-
     DUSTY_ORE_3(SkyMachinaTweaks.register().item("dusty_crushed_ore_l3", Item::new)
             .properties(p -> p.rarity(Rarity.RARE))
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(85,255,255), 0))
             .model(AssetLookup.itemModel("dusty_crushed_ore_l3"))
             .register()),
-
     DUSTY_ORE_4(SkyMachinaTweaks.register().item("dusty_crushed_ore_l4", Item::new)
             .properties(p -> p.rarity(Rarity.EPIC))
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(255,85,255), 0))
             .model(AssetLookup.itemModel("dusty_crushed_ore_l4"))
             .register()),
-
     DUSTY_ORE_5(SkyMachinaTweaks.register().item("dusty_crushed_ore_l5", Item::new)
             .properties(p -> p.rarity(Rarity.create("Legendary", style -> style.withColor(ChatFormatting.DARK_PURPLE))))
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(170,0,170), 0))
             .model(AssetLookup.itemModel("dusty_crushed_ore_l5"))
             .register()),
-
     DUSTY_ORE_6(SkyMachinaTweaks.register().item("dusty_crushed_ore_l6", Item::new)
             .properties(p -> p.rarity(Rarity.create("Omega", style -> style.withColor(ChatFormatting.GOLD))))
             .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(255,170,0), 0))

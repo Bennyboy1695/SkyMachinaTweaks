@@ -1,5 +1,6 @@
 package io.github.bennyboy1695.skymachinatweaks.util;
 
+import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaksClient;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.ItemStack;
 
@@ -22,5 +23,13 @@ public class ItemColorImpl implements ItemColor {
 
     public static Supplier<ItemColor> supplier(int color, int tintIndex) {
         return () -> new ItemColorImpl(color, tintIndex);
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public int getLayer() {
+        return layer;
     }
 }

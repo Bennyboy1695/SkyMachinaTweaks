@@ -5,13 +5,15 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "skymachinatweaks.refmap.json",
   "mixins": [
+    "MixinFlowingFluid",
     "MixinMeshes",
     "MixinMeshes$MixinAndesiteMesh",
     "MixinMeshes$MixinBrassMesh",
     "MixinMeshes$MixinStringMesh",
     "MixinMeshes$MixinZincMesh",
     "MixinSifterRenderer",
-    "MixinSifterTileEntity"
+    "MixinSifterTileEntity",
+    "MixinVineBlock"
   ],
   "client": [
   ],
