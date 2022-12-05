@@ -1,5 +1,6 @@
 package io.github.bennyboy1695.skymachinatweaks.register;
 
+import com.simibubi.create.content.contraptions.fluids.VirtualFluid;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
@@ -38,6 +39,11 @@ public enum MachinaFluids {
                 .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(64,38,81), 1))
                 .model(AssetLookup.itemModel("generated_bucket"))
                 .build()
+            .register()),
+    ANDESITE(SkyMachinaTweaks.register().fluid("liquid_andesite")
+            .attributes(a -> a.color(ColorUtils.intColor(153,153,153)))
+            .lang("Andesite")
+            .source(VirtualFluid::new)
             .register());
 
     private final FluidEntry<?> fluidEntry;
