@@ -97,5 +97,6 @@
   "block.skymachinatweaks.molten_andesite_alloy": "Molten Andesite Alloy",
   "item.skymachinatweaks.liquid_void_bucket": "Liquid Void Bucket",
   "item.skymachinatweaks.liquid_nether_bucket": "Liquid Nether Bucket",
-  "item.skymachinatweaks.liquid_overworld_bucket": "Liquid Overworld Bucket"
+  "item.skymachinatweaks.liquid_overworld_bucket": "Liquid Overworld Bucket",
+  "item.skymachinatweaks.liquid_andesite_bucket": "Liquid Andesite Bucket"
 }

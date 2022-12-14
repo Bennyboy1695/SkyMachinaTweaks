@@ -40,15 +40,19 @@ public enum MachinaFluids {
                 .model(AssetLookup.itemModel("generated_bucket"))
                 .build()
             .register()),
-    ANDESITE(SkyMachinaTweaks.register().fluid("liquid_andesite")
+    ANDESITE(SkyMachinaTweaks.register().fluid("liquid_andesite", still(), flowing())
             .attributes(a -> a.color(ColorUtils.intColor(153,153,153)))
-            .lang("Andesite")
-            .source(VirtualFluid::new)
+            .source(ForgeFlowingFluid.Source::new)
+            .bucket()
+            .lang("Liquid Void Bucket")
+            .color(() -> ItemColorImpl.supplier(ColorUtils.intColor(153,153,153), 1))
+            .model(AssetLookup.itemModel("generated_bucket"))
+            .build()
             .register()),
-    MOLTEN_ANDESITE_ALLOY(SkyMachinaTweaks.register().fluid("molten_andesite_alloy")
+    MOLTEN_ANDESITE_ALLOY(SkyMachinaTweaks.register().fluid("molten_andesite_alloy", still(), flowing())
             .attributes(a -> a.color(ColorUtils.intColor(153,153,153)))
-            .lang("Molten Andesite Alloy")
             .source(VirtualFluid::new)
+            .noBucket()
             .register());
 
     private final FluidEntry<?> fluidEntry;
