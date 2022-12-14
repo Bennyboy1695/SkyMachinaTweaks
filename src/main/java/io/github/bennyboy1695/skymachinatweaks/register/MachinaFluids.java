@@ -44,6 +44,11 @@ public enum MachinaFluids {
             .attributes(a -> a.color(ColorUtils.intColor(153,153,153)))
             .lang("Andesite")
             .source(VirtualFluid::new)
+            .register()),
+    MOLTEN_ANDESITE_ALLOY(SkyMachinaTweaks.register().fluid("molten_andesite_alloy")
+            .attributes(a -> a.color(ColorUtils.intColor(153,153,153)))
+            .lang("Molten Andesite Alloy")
+            .source(VirtualFluid::new)
             .register());
 
     private final FluidEntry<?> fluidEntry;

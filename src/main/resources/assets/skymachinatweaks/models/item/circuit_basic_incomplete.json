@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "skymachinatweaks:item/circuit_basic_incomplete"
+  }
+}
