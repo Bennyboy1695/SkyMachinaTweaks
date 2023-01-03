@@ -73,6 +73,18 @@ public enum MachinaBlocks {
             .properties(p -> p.sound(SoundType.GRAVEL))
             .initialProperties(Material.DIRT)
             .blockstate((gen, block) -> block.simpleBlock(gen.getEntry(), AssetLookup.partialBaseModel(gen, block)))
+            .register()),
+    SMALL_COG_BASE(SkyMachinaTweaks.register().block("small_cog_base", Block::new)
+            .simpleItem()
+            .properties(p -> p.sound(SoundType.WOOD))
+            .initialProperties(Material.WOOD)
+            .blockstate((gen, block) -> block.simpleBlock(gen.getEntry(), AssetLookup.partialBaseModel(gen, block)))
+            .register()),
+    LARGE_COG_BASE(SkyMachinaTweaks.register().block("large_cog_base", Block::new)
+            .simpleItem()
+            .properties(p -> p.sound(SoundType.WOOD))
+            .initialProperties(Material.WOOD)
+            .blockstate((gen, block) -> block.simpleBlock(gen.getEntry(), AssetLookup.partialBaseModel(gen, block)))
             .register());
 
 

@@ -9,7 +9,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.fluids.IFluidBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
@@ -32,7 +35,9 @@ public class MixinMeshes {
             CompoundTag tag = stack.getOrCreateTag();
             if (tag.contains("Sifting")) {
                 ItemStack toSift = ItemStack.of(tag.getCompound("Sifting"));
-                List<ItemStack> sifted = SiftingRecipe.applyHandSift(worldIn, entityLiving.position(), toSift, stack);
+                Block blockUnderPlayer = player.getFeetBlockState().getBlock();
+                boolean waterlogged = blockUnderPlayer instanceof LiquidBlock || blockUnderPlayer instanceof IFluidBlock;
+                List<ItemStack> sifted = SiftingRecipe.applyHandSift(worldIn, entityLiving.position(), toSift, stack, waterlogged);
                 if (worldIn.isClientSide) {
                     spawnParticles(entityLiving.getEyePosition(1.0F).add(entityLiving.getLookAngle().scale(0.5)), toSift, worldIn);
                     return stack;
