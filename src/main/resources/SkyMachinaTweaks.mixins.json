@@ -13,6 +13,7 @@
     "MixinMeshes$MixinZincMesh",
     "MixinSifterRenderer",
     "MixinSifterTileEntity",
+    "MixinSiftingRecipe",
     "MixinVineBlock"
   ],
   "client": [

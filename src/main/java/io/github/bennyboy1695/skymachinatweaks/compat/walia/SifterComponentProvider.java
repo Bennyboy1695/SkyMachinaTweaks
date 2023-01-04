@@ -10,6 +10,7 @@ import mcp.mobius.waila.api.ui.IElementHelper;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -27,21 +28,26 @@ public enum SifterComponentProvider implements IComponentProvider, IServerDataPr
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendTooltip(ITooltip iTooltip, BlockAccessor blockAccessor, IPluginConfig iPluginConfig) {
-        CompoundTag data = blockAccessor.getServerData();
         ItemStack mesh = blockAccessor.getServerData().getBoolean("hasMesh") ? ForgeRegistries.ITEMS.getValue(new ResourceLocation(blockAccessor.getServerData().getString("mesh").split(":")[0], blockAccessor.getServerData().getString("mesh").split(":")[1])).getDefaultInstance() : ItemStack.EMPTY;
-        TranslatableComponent one = new TranslatableComponent("skymachinatweaks.waila.sifter.mesh");
         Component colon = new TextComponent(": ");
         TranslatableComponent meshText = (blockAccessor.getServerData().getBoolean("hasMesh")
                         ? new TranslatableComponent(mesh.getDescriptionId())
                         : new TranslatableComponent("skymachinatweaks.waila.sifter.no_mesh"));
-        iTooltip.add(0, one.append(colon).append(meshText));
-        IElementHelper helper = iTooltip.getElementHelper();
+        MutableComponent meshInfo = new TranslatableComponent("skymachinatweaks.waila.sifter.mesh").append(colon).append(meshText);
+        if (blockAccessor.getServerData().getBoolean("hasMesh")) {
+            meshInfo.append(" (" + (mesh.getMaxDamage() - blockAccessor.getServerData().getInt("durability")) + "/" + mesh.getMaxDamage() + ")");
+        }
+        iTooltip.add(0, meshInfo);
+        iTooltip.add(1, new TranslatableComponent("skymachinatweaks.walia.sifter.waterlogged")
+                .append(colon)
+                .append((blockAccessor.getServerData().getBoolean("waterlogged") ? new TextComponent("True") : new TextComponent("False"))));
     }
 
     @Override
     public void appendServerData(CompoundTag compoundTag, ServerPlayer serverPlayer, Level level, BlockEntity blockEntity, boolean b) {
         SifterTileEntity sifterTileEntity = (SifterTileEntity) blockEntity;
         compoundTag.putBoolean("hasMesh", sifterTileEntity.hasMesh());
+        compoundTag.putBoolean("waterlogged", sifterTileEntity.isWaterlogged());
         if (sifterTileEntity.hasMesh()) {
             ItemStack mesh = sifterTileEntity.meshInv.getStackInSlot(0);
             compoundTag.putString("mesh", mesh.getItem().getRegistryName().toString());

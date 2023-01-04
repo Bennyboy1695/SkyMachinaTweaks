@@ -43,6 +43,8 @@ public abstract class MixinSifterTileEntity extends KineticTileEntity {
     @Shadow
     public abstract void spawnParticles();
 
+    @Shadow public abstract boolean isWaterlogged();
+
     public MixinSifterTileEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
     }
@@ -85,11 +87,11 @@ public abstract class MixinSifterTileEntity extends KineticTileEntity {
                 }
             } else if (!this.inputInv.getStackInSlot(0).isEmpty()) {
                 RecipeWrapper inventoryIn = new RecipeWrapper(this.inputAndMeshCombined);
-                if (this.lastRecipe != null && this.lastRecipe.matches(inventoryIn, this.level)) {
+                if (this.lastRecipe != null && this.lastRecipe.matches(inventoryIn, this.level, isWaterlogged())) {
                     this.timer = this.lastRecipe.getProcessingDuration();
                     this.sendData();
                 } else {
-                    Optional<SiftingRecipe> recipe = ModRecipeTypes.SIFTING.find(inventoryIn, this.level);
+                    Optional<SiftingRecipe> recipe = ModRecipeTypes.SIFTING.find(inventoryIn, this.level, isWaterlogged());
                     if (!recipe.isPresent()) {
                         this.timer = 100;
                         this.sendData();
@@ -111,8 +113,8 @@ public abstract class MixinSifterTileEntity extends KineticTileEntity {
     @Overwrite
     private void process() {
         RecipeWrapper inventoryIn = new RecipeWrapper(this.inputAndMeshCombined);
-        if (this.lastRecipe == null || !this.lastRecipe.matches(inventoryIn, this.level)) {
-            Optional<SiftingRecipe> recipe = ModRecipeTypes.SIFTING.find(inventoryIn, this.level);
+        if (this.lastRecipe == null || !this.lastRecipe.matches(inventoryIn, this.level, isWaterlogged())) {
+            Optional<SiftingRecipe> recipe = ModRecipeTypes.SIFTING.find(inventoryIn, this.level, isWaterlogged());
             if (!recipe.isPresent()) {
                 return;
             }
