@@ -32,6 +32,7 @@
   "item.skymachinatweaks.overworld_cake_base": "Overworld Cake Base",
   "item.skymachinatweaks.nether_cake_base": "Nether Cake Base",
   "item.skymachinatweaks.void_cake_base": "Void Cake Base",
+  "item.skymachinatweaks.empty_gate_pearl": "Empty Gate Pearl",
   "item.skymachinatweaks.circuit_basic": "Basic Circuitry",
   "item.skymachinatweaks.circuit_enhanced": "Enhanced Circuitry",
   "item.skymachinatweaks.circuit_advanced": "Advanced Circuitry",
@@ -99,5 +100,6 @@
   "item.skymachinatweaks.liquid_void_bucket": "Liquid Void Bucket",
   "item.skymachinatweaks.liquid_nether_bucket": "Liquid Nether Bucket",
   "item.skymachinatweaks.liquid_overworld_bucket": "Liquid Overworld Bucket",
-  "item.skymachinatweaks.liquid_andesite_bucket": "Liquid Andesite Bucket"
+  "item.skymachinatweaks.liquid_andesite_bucket": "Liquid Andesite Bucket",
+  "item.skymachinatweaks.molten_andesite_alloy_bucket": "Molten Andesite Alloy Bucket"
 }
