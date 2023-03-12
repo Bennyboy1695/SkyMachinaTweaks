@@ -11,7 +11,6 @@
     "MixinMeshes$MixinBrassMesh",
     "MixinMeshes$MixinStringMesh",
     "MixinMeshes$MixinZincMesh",
-    "MixinSifterRenderer",
     "MixinSifterTileEntity",
     "MixinSiftingRecipe",
     "MixinVineBlock"
