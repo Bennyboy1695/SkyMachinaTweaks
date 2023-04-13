@@ -10,7 +10,6 @@ public enum MachinaBlocks {
 
     CRUCIBLE(SkyMachinaTweaks.register().block("crucible", Crucible::new)
             .initialProperties(Material.CLAY)
-
             .simpleItem()
             .register());
 

@@ -1,6 +1,7 @@
 package io.github.bennyboy1695.skymachinatweaks.block;
 
 import com.simibubi.create.foundation.block.ITE;
+import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
 import io.github.bennyboy1695.skymachinatweaks.block.tile.CrucibleTileEntity;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.CrucibleRecipe;
 import io.github.bennyboy1695.skymachinatweaks.register.MachinaTiles;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -70,17 +70,19 @@ public class Crucible extends Block implements ITE<CrucibleTileEntity> {
             return InteractionResult.SUCCESS;
         }
 
-        @Nonnull final ItemStack addStack = itemStack.copy();
-        addStack.setCount(1);
-        @Nonnull final ItemStack insertStack = crucible.inputInv().insertItem(0, addStack, true);
-        if (!ItemStack.matches(addStack, insertStack)) {
-            crucible.inputInv().insertItem(0, addStack, false);
+        if (SkyMachinaTweaks.getInstance().recipeCache().isMeltableByItemStack(itemStack)) {
+            @Nonnull final ItemStack addStack = itemStack.copy();
+            addStack.setCount(1);
+            @Nonnull final ItemStack insertStack = crucible.inputInv().insertItem(0, addStack, true);
+            if (!ItemStack.matches(addStack, insertStack)) {
+                crucible.inputInv().insertItem(0, addStack, false);
 
-            if (!player.isCreative()) {
-                itemStack.shrink(1);
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
+                crucible.setChanged();
+                return InteractionResult.SUCCESS;
             }
-            crucible.setChanged();
-            return InteractionResult.SUCCESS;
         }
         return InteractionResult.SUCCESS;
     }
