@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "skymachinatweaks:item/dusty_crushed_ore_l3"
-  }
-}

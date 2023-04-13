@@ -6,13 +6,6 @@
   "refmap": "skymachinatweaks.refmap.json",
   "mixins": [
     "MixinFlowingFluid",
-    "MixinMeshes",
-    "MixinMeshes$MixinAndesiteMesh",
-    "MixinMeshes$MixinBrassMesh",
-    "MixinMeshes$MixinStringMesh",
-    "MixinMeshes$MixinZincMesh",
-    "MixinSifterTileEntity",
-    "MixinSiftingRecipe",
     "MixinVineBlock"
   ],
   "client": [

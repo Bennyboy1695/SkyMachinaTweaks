@@ -1,36 +1,59 @@
 package io.github.bennyboy1695.skymachinatweaks;
 
-import com.oierbravo.createsifter.register.ModBlocks;
-import io.github.bennyboy1695.skymachinatweaks.compat.create.MachinaPonders;
-import io.github.bennyboy1695.skymachinatweaks.compat.createsifter.CustomMesh;
-import io.github.bennyboy1695.skymachinatweaks.register.MachinaItems;
-import io.github.bennyboy1695.skymachinatweaks.register.MachinaPartials;
-import io.github.bennyboy1695.skymachinatweaks.util.BlockColorImpl;
-import io.github.bennyboy1695.skymachinatweaks.util.ColorUtils;
-import io.github.bennyboy1695.skymachinatweaks.util.ItemColorImpl;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import io.github.bennyboy1695.skymachinatweaks.data.recipe.CrucibleRecipe;
+import io.github.bennyboy1695.skymachinatweaks.data.recipe.HeatRecipe;
+import io.github.bennyboy1695.skymachinatweaks.register.MachinaRecipeTypes;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
+import net.minecraftforge.client.event.RecipesUpdatedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import javax.annotation.Nonnull;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SkyMachinaTweaksClient {
 
     public static void onClient(IEventBus modEventBus, IEventBus forgeEventBus) {
-        MachinaPartials.load();
         modEventBus.addListener(SkyMachinaTweaksClient::clientInit);
-        modEventBus.addListener(SkyMachinaTweaksClient::onBlockColor);
+        forgeEventBus.addListener(SkyMachinaTweaksClient::clearRegistries);
+        forgeEventBus.addListener(SkyMachinaTweaksClient::loadClientRecipes);
     }
 
     public static void clientInit(final FMLClientSetupEvent event) {
-        MachinaPonders.registerTags();
     }
 
-    public static void onBlockColor(ColorHandlerEvent.Block event) {
-        event.getBlockColors().register(new BlockColorImpl(ColorUtils.intColor(69, 73, 72), 0), ModBlocks.SIFTER.get());
-        event.getBlockColors().register(new BlockColorImpl(ColorUtils.intColor(62, 67, 87), 0), ModBlocks.SIFTER.get());
-        event.getBlockColors().register(new BlockColorImpl(ColorUtils.intColor(21,191,55), 0), ModBlocks.SIFTER.get());
+    private static void clearRegistries(ClientPlayerNetworkEvent.LoggingOut event) {
+        SkyMachinaTweaks.getInstance().recipeCache().clearHeatRecipes();
+        SkyMachinaTweaks.getInstance().recipeCache().clearCrucibleRecipes();
+    }
+
+    public static void loadClientRecipes(RecipesUpdatedEvent event) {
+        SkyMachinaTweaks.getInstance().recipeCache().clearHeatRecipes();
+        SkyMachinaTweaks.getInstance().recipeCache().clearCrucibleRecipes();
+        loadRecipes(event.getRecipeManager());
+    }
+
+    private static void loadRecipes(RecipeManager manager) {
+        @Nonnull final Collection<Recipe<?>> recipes = manager.getRecipes();
+        if (recipes.isEmpty()) {
+            return;
+        }
+        SkyMachinaTweaks.getInstance().recipeCache().setRecipes(
+                filterRecipes(
+                        recipes, CrucibleRecipe.class, MachinaRecipeTypes.CRUCIBLE_RECIPE_TYPE.get()));
+        SkyMachinaTweaks.getInstance().recipeCache().setHeatRecipes(
+                filterRecipes(recipes, HeatRecipe.class, MachinaRecipeTypes.HEAT_RECIPE_TYPE.get()));
+    }
+
+    private static <R extends Recipe<?>> List<R> filterRecipes(@Nonnull final Collection<Recipe<?>> recipes, @Nonnull final Class<R> recipeClass, @Nonnull final RecipeType<R> recipeType) {
+        return recipes.stream()
+                .filter(iRecipe -> iRecipe.getType() == recipeType)
+                .map(recipeClass::cast)
+                .collect(Collectors.toList());
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "skymachinatweaks:crucible",
+  "amount": 250,
+  "fluidResult": {
+    "fluid": "minecraft:lava"
+  },
+  "input": {
+    "item": "minecraft:cobblestone"
+  }
+}

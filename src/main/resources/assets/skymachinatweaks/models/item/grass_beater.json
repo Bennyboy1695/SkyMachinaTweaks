@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "skymachinatweaks:item/grass_beater"
+  }
+}
