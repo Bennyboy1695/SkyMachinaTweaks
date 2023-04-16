@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import io.github.bennyboy1695.skymachinatweaks.config.Config;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.CrucibleRecipe;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.HeatRecipe;
+import io.github.bennyboy1695.skymachinatweaks.data.recipe.gen.SkyMachinaRecipe;
 import io.github.bennyboy1695.skymachinatweaks.register.*;
 import io.github.bennyboy1695.skymachinatweaks.util.MachinaCreativeTab;
 import io.github.bennyboy1695.skymachinatweaks.util.RecipeCache;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -57,8 +59,10 @@ public class SkyMachinaTweaks {
 
         MachinaRecipeSerializers.init(modEventBus);
         MachinaRecipeTypes.init(modEventBus);
+        ModRecipeTypes.register(modEventBus);
 
         forgeEventBus.addListener(this::serverStart);
+        forgeEventBus.addListener(this::gatherData);
 
         generateLangTweaks();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> SkyMachinaTweaksClient.onClient(modEventBus, forgeEventBus));
@@ -67,6 +71,12 @@ public class SkyMachinaTweaks {
     private void serverStart(ServerStartedEvent event) {
         if (event.getServer().isDedicatedServer()) {
             loadRecipes(event.getServer().getRecipeManager());
+        }
+    }
+
+    private void gatherData(GatherDataEvent event) {
+        if (event.includeServer()) {
+            SkyMachinaRecipe.registerAllProcessingProviders(event.getGenerator());
         }
     }
 

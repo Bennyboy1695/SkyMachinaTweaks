@@ -40,10 +40,7 @@ public class CrucibleRecipeJS extends RecipeJS {
     }
 
     @Override
-    public boolean replaceInput(
-            IngredientMatch ingredientMatch,
-            Ingredient ingredient,
-            ItemInputTransformer itemInputTransformer) {
+    public boolean replaceInput(IngredientMatch ingredientMatch, Ingredient ingredient, ItemInputTransformer itemInputTransformer) {
         if (ingredientMatch.contains(this.input)) {
             this.input = itemInputTransformer.transform(this, ingredientMatch, this.input, ingredient);
             return true;
@@ -58,10 +55,7 @@ public class CrucibleRecipeJS extends RecipeJS {
     }
 
     @Override
-    public boolean replaceOutput(
-            IngredientMatch ingredientMatch,
-            ItemStack itemStack,
-            ItemOutputTransformer itemOutputTransformer) {
+    public boolean replaceOutput(IngredientMatch ingredientMatch, ItemStack itemStack, ItemOutputTransformer itemOutputTransformer) {
         return false;
     }
 }

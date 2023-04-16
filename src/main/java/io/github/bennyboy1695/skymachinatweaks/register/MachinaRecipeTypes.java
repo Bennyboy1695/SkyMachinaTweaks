@@ -1,6 +1,7 @@
 package io.github.bennyboy1695.skymachinatweaks.register;
 
 import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
+import io.github.bennyboy1695.skymachinatweaks.data.recipe.BeaterRecipe;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.CrucibleRecipe;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.HeatRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
