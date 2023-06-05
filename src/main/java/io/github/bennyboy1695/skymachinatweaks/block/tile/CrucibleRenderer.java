@@ -2,21 +2,18 @@ package io.github.bennyboy1695.skymachinatweaks.block.tile;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.simibubi.create.foundation.blockEntity.renderer.SafeBlockEntityRenderer;
 import com.simibubi.create.foundation.fluid.FluidRenderer;
-import com.simibubi.create.foundation.tileEntity.renderer.SafeTileEntityRenderer;
-import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 
-public class CrucibleRenderer extends SafeTileEntityRenderer<CrucibleTileEntity> {
+public class CrucibleRenderer extends SafeBlockEntityRenderer<CrucibleTileEntity> {
 
     public CrucibleRenderer(BlockEntityRendererProvider.Context context) {
     }

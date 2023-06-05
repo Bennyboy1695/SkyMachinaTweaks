@@ -37,8 +37,8 @@ public class SkyMachinaTweaks {
 
     public static final String MOD_ID = "skymachinatweaks";
     private static SkyMachinaTweaks instance;
-    private static final NonNullSupplier<CreateRegistrate> REGISTRATE = CreateRegistrate.lazy(MOD_ID);
-    private static final CreateRegistrate register = REGISTRATE.get().creativeModeTab(() -> new MachinaCreativeTab(SkyMachinaTweaks.MOD_ID));
+    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
+    private static final CreateRegistrate register = REGISTRATE.creativeModeTab(() -> new MachinaCreativeTab(SkyMachinaTweaks.MOD_ID));
     private static final Logger logger = LogUtils.getLogger();
     private RecipeCache recipeCache;
 
@@ -47,7 +47,7 @@ public class SkyMachinaTweaks {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
-        CreateRegistrate r = REGISTRATE.get();
+        CreateRegistrate r = REGISTRATE;
 
         recipeCache = new RecipeCache();
 
@@ -104,7 +104,7 @@ public class SkyMachinaTweaks {
     }
 
     private void generateLangTweaks() {
-        REGISTRATE.get().addRawLang("itemGroup.skymachinatweaks", "Sky Machina Tweaks");
+        REGISTRATE.addRawLang("itemGroup.skymachinatweaks", "Sky Machina Tweaks");
     }
 
     public static Logger getLogger() {

@@ -1,6 +1,6 @@
 package io.github.bennyboy1695.skymachinatweaks.block;
 
-import com.simibubi.create.foundation.block.ITE;
+import com.simibubi.create.foundation.block.IBE;
 import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
 import io.github.bennyboy1695.skymachinatweaks.block.tile.CrucibleTileEntity;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.CrucibleRecipe;
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class Crucible extends Block implements ITE<CrucibleTileEntity> {
+public class Crucible extends Block implements IBE<CrucibleTileEntity> {
 
     private static final VoxelShape INSIDE = box(2.0D, 4.0D, 2.0D, 14.0D, 16.0D, 14.0D);
     protected static final VoxelShape SHAPE = Shapes.join(Shapes.block(), Shapes.or(box(0.0D, 0.0D, 4.0D, 16.0D, 3.0D, 12.0D), box(4.0D, 0.0D, 0.0D, 12.0D, 3.0D, 16.0D), box(2.0D, 0.0D, 2.0D, 14.0D, 3.0D, 14.0D), INSIDE), BooleanOp.ONLY_FIRST);
@@ -88,12 +88,12 @@ public class Crucible extends Block implements ITE<CrucibleTileEntity> {
     }
 
     @Override
-    public Class<CrucibleTileEntity> getTileEntityClass() {
+    public Class<CrucibleTileEntity> getBlockEntityClass() {
         return CrucibleTileEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CrucibleTileEntity> getTileEntityType() {
+    public BlockEntityType<? extends CrucibleTileEntity> getBlockEntityType() {
         return MachinaTiles.CRUCIBLE.get();
     }
 }

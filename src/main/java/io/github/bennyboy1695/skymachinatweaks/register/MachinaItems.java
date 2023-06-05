@@ -1,6 +1,6 @@
 package io.github.bennyboy1695.skymachinatweaks.register;
 
-import com.simibubi.create.content.contraptions.itemAssembly.SequencedAssemblyItem;
+import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;

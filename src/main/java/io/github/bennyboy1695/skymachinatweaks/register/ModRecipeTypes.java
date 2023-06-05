@@ -1,11 +1,11 @@
 package io.github.bennyboy1695.skymachinatweaks.register;
 
 import com.google.common.collect.ImmutableSet;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeSerializer;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
+import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.RegisteredObjects;
-import com.simibubi.create.foundation.utility.recipe.IRecipeTypeInfo;
 import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.BeaterRecipe;
 import net.minecraft.core.Registry;

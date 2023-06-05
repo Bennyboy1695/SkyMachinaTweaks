@@ -1,7 +1,7 @@
 package io.github.bennyboy1695.skymachinatweaks.data.recipe.gen;
 
 import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
-import com.simibubi.create.foundation.utility.recipe.IRecipeTypeInfo;
+import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import io.github.bennyboy1695.skymachinatweaks.register.ModRecipeTypes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;

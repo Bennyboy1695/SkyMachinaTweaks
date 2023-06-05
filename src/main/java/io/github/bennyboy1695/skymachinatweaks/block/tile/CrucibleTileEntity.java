@@ -1,18 +1,13 @@
 package io.github.bennyboy1695.skymachinatweaks.block.tile;
 
+import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
+import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.item.SmartInventory;
-import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
-import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
-import com.simibubi.create.foundation.tileEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import io.github.bennyboy1695.skymachinatweaks.SkyMachinaTweaks;
 import io.github.bennyboy1695.skymachinatweaks.data.recipe.CrucibleRecipe;
-import io.github.bennyboy1695.skymachinatweaks.register.MachinaRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -21,7 +16,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.CombinedInvWrapper;
@@ -35,7 +29,7 @@ import java.util.Optional;
  * Crucible code is largely copied from ExNihiloSequentia. Because only the crucible was needed and nothing else.
  * You can find the mod here: https://github.com/NovaMachina-Mods/ExNihiloSequentia
  */
-public class CrucibleTileEntity extends SmartTileEntity {
+public class CrucibleTileEntity extends SmartBlockEntity {
 
     private SmartFluidTankBehaviour outputTank;
     private SmartInventory inputInv;
@@ -150,7 +144,7 @@ public class CrucibleTileEntity extends SmartTileEntity {
     }
 
     @Override
-    public void addBehaviours(List<TileEntityBehaviour> behaviours) {
+    public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         behaviours.add(outputTank = SmartFluidTankBehaviour.single(this, 4000)
                 .forbidInsertion()
                 .allowExtraction());
